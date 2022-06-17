@@ -1,6 +1,6 @@
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { useCallback, useEffect, useState } from 'react'
-import { requestOptions } from '../../helpers/request-options.helper'
+import { exerciseRequestOptions } from '../../helpers/request-options.helper'
 import { TExercise } from '../../types/exercise.types'
 import HorizontalScrollbar from '../horizontal-scrollbar/horizontal-scrollbar.component'
 
@@ -42,7 +42,7 @@ const SearchExercise: React.FC<IProps> = ({
         try {
             const response = await fetch(
                 'https://exercisedb.p.rapidapi.com/exercises',
-                requestOptions
+                exerciseRequestOptions
             )
             const data = (await response.json()) as Record<string, string>[]
 
@@ -68,7 +68,7 @@ const SearchExercise: React.FC<IProps> = ({
             try {
                 const response = await fetch(
                     'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
-                    requestOptions
+                    exerciseRequestOptions
                 )
                 const data = await response.json()
 

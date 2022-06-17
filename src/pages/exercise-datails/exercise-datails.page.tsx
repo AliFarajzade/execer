@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Details from '../../components/details/details.component'
-import { requestOptions } from '../../helpers/request-options.helper'
+import { exerciseRequestOptions } from '../../helpers/request-options.helper'
 import { TExercise } from '../../types/exercise.types'
 
 const ExerciseDetails: React.FC = () => {
@@ -23,7 +23,7 @@ const ExerciseDetails: React.FC = () => {
 
             const response = await fetch(
                 `${exerciseDbUrl}/exercises/exercise/${id}`,
-                requestOptions
+                exerciseRequestOptions
             )
 
             const exerciseDetailData = await response.json()

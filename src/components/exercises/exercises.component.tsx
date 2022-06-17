@@ -1,6 +1,6 @@
 import { Box, Pagination, Stack, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { requestOptions } from '../../helpers/request-options.helper'
+import { exerciseRequestOptions } from '../../helpers/request-options.helper'
 import { TExercise } from '../../types/exercise.types'
 import ExerciseCard from '../exercise-card/exercise-card.component'
 
@@ -37,13 +37,13 @@ const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
             if (bodypart === 'all') {
                 const response = await fetch(
                     'https://exercisedb.p.rapidapi.com/exercises',
-                    requestOptions
+                    exerciseRequestOptions
                 )
                 exercisesData = await response.json()
             } else {
                 const response = await fetch(
                     `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodypart}`,
-                    requestOptions
+                    exerciseRequestOptions
                 )
                 exercisesData = await response.json()
             }
