@@ -13,8 +13,6 @@ interface IProps {
 }
 
 const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
-    console.log(exercises)
-
     const [page, setPage] = useState<number>(1)
 
     const paginate = (_event: React.ChangeEvent<unknown>, page: number) => {

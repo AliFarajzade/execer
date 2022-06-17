@@ -6,8 +6,6 @@ interface IProps {
 }
 
 const RelatedVideos: React.FC<IProps> = ({ exerciseName, youtubeData }) => {
-    console.log(youtubeData)
-
     return (
         <Box sx={{ marginTop: { lg: '203px', xs: '20px' } }} p="20px">
             <Typography

@@ -21,6 +21,13 @@ const ExerciseDetails: React.FC = () => {
     const [youtubeData, setYoutubeData] = useState<any | null>(null)
     const [isYoutubeLoading, setIsYoutubeLoading] = useState<boolean>(false)
 
+    const [targetMuscle, setTargetMuscle] = useState<any | null>(null)
+    const [targetMuscleisLoading, setTargetMuscleisLoading] =
+        useState<boolean>(false)
+
+    const [equipment, setEquipment] = useState<any | null>(null)
+    const [isEquipmentLoading, setIsEquipmentLoading] = useState<boolean>(false)
+
     useEffect(() => {
         const fetchExercisesData = async () => {
             const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com'
@@ -48,12 +55,31 @@ const ExerciseDetails: React.FC = () => {
             setYoutubeData(youtubeSearchData)
             setIsYoutubeLoading(false)
             //
+
+            setTargetMuscleisLoading(true)
+            const targetMuscleResponse = await fetch(
+                `${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`,
+                exerciseRequestOptions
+            )
+            const targetMuscleData = await targetMuscleResponse.json()
+            setTargetMuscle(targetMuscleData)
+            setTargetMuscleisLoading(false)
+            //
+
+            setIsEquipmentLoading(true)
+            const equipmentResponse = await fetch(
+                `${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,
+                exerciseRequestOptions
+            )
+            const equipmentData = await equipmentResponse.json()
+            setEquipment(equipmentData)
+            setIsEquipmentLoading(false)
         }
 
         fetchExercisesData()
     }, [id])
 
-    console.log(exerciseDetails)
+    console.log(targetMuscle, equipment)
 
     return (
         <Box>
