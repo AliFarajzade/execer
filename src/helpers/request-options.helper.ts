@@ -20,4 +20,4 @@ export const youtubeRequestOptions = {
         'X-RapidAPI-Key': process.env.REACT_APP_YOUTUBE_API_SECRET_KEY,
         'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com',
     },
-}
+} as RequestInit
