@@ -18,9 +18,7 @@ const SearchExercise: React.FC<IProps> = ({
     setExercises,
 }) => {
     const [searchValue, setSearchValue] = useState<string>('')
-    const [fetchedExercises, setFetchedExercises] = useState<
-        TExercise[] | null
-    >(null)
+
     const [isExercisesLoading, setIsExercisesLoading] = useState<boolean>(false)
     const [exercisesError, setExercisesError] = useState<unknown | null>(null)
 
@@ -54,7 +52,7 @@ const SearchExercise: React.FC<IProps> = ({
                 )
             ) as TExercise[] | []
 
-            setFetchedExercises(filterdData)
+            setExercises(filterdData)
             setSearchValue('')
         } catch (error) {
             setExercisesError(error)
@@ -86,15 +84,6 @@ const SearchExercise: React.FC<IProps> = ({
             setIsCategoriesLoading(false)
         }
     }, [])
-
-    console.log(
-        '\nfetchedExercises:',
-        fetchedExercises,
-        'isExercisesLoading:',
-        isExercisesLoading,
-        'exercisesError:',
-        exercisesError
-    )
 
     return (
         <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
