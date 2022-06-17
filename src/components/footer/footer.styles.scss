@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+.footer {
+    font-family: Roboto;
+    background-color: #ffcccc;
+    height: 200px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 100px;
+    align-items: center;
+    > * {
+        font-family: Roboto;
+    }
+
+    &__link {
+        color: rgb(52, 201, 201);
+    }
+}

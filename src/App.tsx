@@ -6,11 +6,13 @@ import Router from './router/router'
 
 const App: React.FC = () => {
     return (
-        <Box width="400px" sx={{ width: { xl: '1440px' } }} m="auto">
-            <Navbar />
-            <Router />
+        <>
+            <Box width="400px" sx={{ width: { xl: '1440px' } }} m="auto">
+                <Navbar />
+                <Router />
+            </Box>
             <Footer />
-        </Box>
+        </>
     )
 }
 

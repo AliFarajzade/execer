@@ -4,11 +4,17 @@ import { TExercise } from '../../types/exercise.types'
 
 interface IProps {
     exercise: TExercise
+    exercisePage?: boolean
+    itemId?: string
 }
 
-const ExerciseCard: React.FC<IProps> = ({ exercise }) => {
+const ExerciseCard: React.FC<IProps> = ({ exercise, exercisePage }) => {
     return (
-        <Link className="exercise-card" to={`/exercise/${exercise.id}`}>
+        <Link
+            style={{ marginRight: exercisePage ? '40px' : '0' }}
+            className="exercise-card"
+            to={`/exercise/${exercise.id}`}
+        >
             <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
             <Stack direction="row">
                 <Button

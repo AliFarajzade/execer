@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { exerciseRequestOptions } from '../../helpers/request-options.helper'
 import { TExercise } from '../../types/exercise.types'
 import HorizontalScrollbar from '../horizontal-scrollbar/horizontal-scrollbar.component'
+import Loader from '../loader/loader.component'
 
 const keys = ['bodyPart', 'name', 'target', 'equipment']
 
@@ -19,7 +20,6 @@ const SearchExercise: React.FC<IProps> = ({
 }) => {
     const [searchValue, setSearchValue] = useState<string>('')
 
-    const [isExercisesLoading, setIsExercisesLoading] = useState<boolean>(false)
     const [exercisesError, setExercisesError] = useState<unknown | null>(null)
 
     const [categories, setCategories] = useState<string[]>([])
@@ -37,7 +37,6 @@ const SearchExercise: React.FC<IProps> = ({
         if (!searchValue.trim()) return // Ignore empty value
 
         setExercisesError(null)
-        setIsExercisesLoading(true)
 
         try {
             const response = await fetch(
@@ -57,8 +56,6 @@ const SearchExercise: React.FC<IProps> = ({
         } catch (error) {
             setExercisesError(error)
         }
-
-        setIsExercisesLoading(false)
     }
 
     useEffect(() => {
@@ -129,13 +126,17 @@ const SearchExercise: React.FC<IProps> = ({
                     Search
                 </Button>
             </Box>
-            <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-                <HorizontalScrollbar
-                    bodypart={bodypart}
-                    setBodyPart={setBodyPart}
-                    categories={categories}
-                />
-            </Box>
+            {isCategoriesLoading ? (
+                <Loader />
+            ) : (
+                <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
+                    <HorizontalScrollbar
+                        bodypart={bodypart}
+                        setBodyPart={setBodyPart}
+                        categories={categories}
+                    />
+                </Box>
+            )}
         </Stack>
     )
 }

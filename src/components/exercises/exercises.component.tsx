@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { exerciseRequestOptions } from '../../helpers/request-options.helper'
 import { TExercise } from '../../types/exercise.types'
 import ExerciseCard from '../exercise-card/exercise-card.component'
+import Loader from '../loader/loader.component'
 
 const EXERCISES_PER_PAGE = 9
 
@@ -14,6 +15,7 @@ interface IProps {
 
 const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
     const [page, setPage] = useState<number>(1)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const paginate = (_event: React.ChangeEvent<unknown>, page: number) => {
         setPage(page)
@@ -30,6 +32,7 @@ const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
 
     useEffect(() => {
         const fetchExercisesData = async () => {
+            setIsLoading(true)
             let exercisesData: TExercise[] = []
 
             if (bodypart === 'all') {
@@ -47,10 +50,13 @@ const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
             }
 
             setExercises(exercisesData)
+            setIsLoading(false)
         }
 
         fetchExercisesData()
     }, [bodypart, setExercises])
+
+    console.log({ isLoading })
 
     return (
         <Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
@@ -72,19 +78,28 @@ const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
                     <ExerciseCard key={exercise.name} exercise={exercise} />
                 ))}
             </Stack>
-            <Stack sx={{ mt: { lg: '114px', xs: '70px' } }} alignItems="center">
-                {exercises.length > EXERCISES_PER_PAGE && (
-                    <Pagination
-                        color="standard"
-                        shape="rounded"
-                        defaultPage={1}
-                        count={Math.ceil(exercises.length / EXERCISES_PER_PAGE)}
-                        page={page}
-                        onChange={paginate}
-                        size="large"
-                    />
-                )}
-            </Stack>
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <Stack
+                    sx={{ mt: { lg: '114px', xs: '70px' } }}
+                    alignItems="center"
+                >
+                    {exercises.length > EXERCISES_PER_PAGE && (
+                        <Pagination
+                            color="standard"
+                            shape="rounded"
+                            defaultPage={1}
+                            count={Math.ceil(
+                                exercises.length / EXERCISES_PER_PAGE
+                            )}
+                            page={page}
+                            onChange={paginate}
+                            size="large"
+                        />
+                    )}
+                </Stack>
+            )}
         </Box>
     )
 }

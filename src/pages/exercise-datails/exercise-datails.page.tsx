@@ -2,7 +2,9 @@ import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Details from '../../components/details/details.component'
+import Loader from '../../components/loader/loader.component'
 import RelatedVideos from '../../components/related-videos/related-videos.component'
+import SimilerExercises from '../../components/similer-exercises/similer-exercises.component'
 import {
     exerciseRequestOptions,
     youtubeRequestOptions,
@@ -16,17 +18,17 @@ const ExerciseDetails: React.FC = () => {
         null
     )
     const [isExerciseDetailsLoading, setIsExerciseDetailsLoading] =
-        useState<boolean>(false)
+        useState<boolean>(true)
 
     const [youtubeData, setYoutubeData] = useState<any | null>(null)
-    const [isYoutubeLoading, setIsYoutubeLoading] = useState<boolean>(false)
+    const [isYoutubeLoading, setIsYoutubeLoading] = useState<boolean>(true)
 
     const [targetMuscle, setTargetMuscle] = useState<any | null>(null)
     const [targetMuscleisLoading, setTargetMuscleisLoading] =
-        useState<boolean>(false)
+        useState<boolean>(true)
 
     const [equipment, setEquipment] = useState<any | null>(null)
-    const [isEquipmentLoading, setIsEquipmentLoading] = useState<boolean>(false)
+    const [isEquipmentLoading, setIsEquipmentLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchExercisesData = async () => {
@@ -83,16 +85,30 @@ const ExerciseDetails: React.FC = () => {
 
     return (
         <Box>
-            {exerciseDetails && (
+            {isExerciseDetailsLoading ? (
+                <Loader />
+            ) : exerciseDetails ? (
                 <>
                     <Details exerciseDetails={exerciseDetails} />
-                    {youtubeData && (
+                    {isYoutubeLoading ? (
+                        <Loader />
+                    ) : (
                         <RelatedVideos
                             youtubeData={youtubeData}
                             exerciseName={ExerciseDetails.name}
                         />
                     )}
+                    {targetMuscleisLoading || isEquipmentLoading ? (
+                        <Loader />
+                    ) : (
+                        <SimilerExercises
+                            equipments={equipment}
+                            targetMuscles={targetMuscle}
+                        />
+                    )}
                 </>
+            ) : (
+                <div>There is no workout with this ID.</div>
             )}
         </Box>
     )
