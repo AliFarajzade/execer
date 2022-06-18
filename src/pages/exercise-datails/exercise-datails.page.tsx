@@ -98,7 +98,7 @@ const ExerciseDetails: React.FC = () => {
                             exerciseName={ExerciseDetails.name}
                         />
                     )}
-                    {targetMuscleisLoading && isEquipmentLoading ? (
+                    {targetMuscleisLoading || isEquipmentLoading ? (
                         <Loader />
                     ) : (
                         <SimilerExercises
