@@ -1,4 +1,4 @@
-<a href="https://execer-gym.netlify.app">
+<a href="https://execer.herokuapp.com">
     <img src="http://www.upsara.com/images/s398355_.png" alt="Execer logo" title="Execer" align="right" height="60" />
 </a>
 
@@ -6,10 +6,10 @@
 
 :star: Star me on GitHub — it motivates me a lot!
 
-[Execer](https://execer-gym.netlify.app) is THE professional, full-featured and
+[Execer](https://execer.herokuapp.com) is THE professional, full-featured and
 high performance fitness website.
 
-[![Execer](http://www.upsara.com/images/c087542_.png)](https://execer-gym.netlify.app)
+[![Execer](http://www.upsara.com/images/c087542_.png)](https://execer.herokuapp.com)
 
 ## Technologies that was used to build this app:
 
@@ -41,4 +41,4 @@ npm run build
 
 ## Links
 
--   [Web site](https://execer-gym.netlify.app)
+-   [Web site](https://execer.herokuapp.com)
