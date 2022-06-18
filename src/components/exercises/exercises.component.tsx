@@ -56,7 +56,6 @@ const Exercises: React.FC<IProps> = ({ bodypart, exercises, setExercises }) => {
         fetchExercisesData()
     }, [bodypart, setExercises])
 
-    console.log({ isLoading })
 
     return (
         <Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">

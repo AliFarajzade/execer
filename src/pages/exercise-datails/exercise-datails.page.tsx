@@ -81,8 +81,6 @@ const ExerciseDetails: React.FC = () => {
         fetchExercisesData()
     }, [id])
 
-    console.log(targetMuscle, equipment)
-
     return (
         <Box>
             {isExerciseDetailsLoading ? (
