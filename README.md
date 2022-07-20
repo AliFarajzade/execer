@@ -1,5 +1,5 @@
 <a href="https://execer.herokuapp.com">
-    <img src="http://www.upsara.com/images/s398355_.png" alt="Execer logo" title="Execer" align="right" height="60" />
+    <img src="https://raw.githubusercontent.com/AliFarajzade/execer/master/public/assets/images/Logo.png" alt="Execer logo" title="Execer" align="right" height="60" />
 </a>
 
 # Execer, A fitness website built with React and TypeScript.
@@ -9,7 +9,7 @@
 [Execer](https://execer.herokuapp.com) is THE professional, full-featured and
 high performance fitness website.
 
-[![Execer](http://www.upsara.com/images/c087542_.png)](https://execer.herokuapp.com)
+[![Execer](https://pasteboard.co/2YWgieQ27efB.png)](https://execer.herokuapp.com)
 
 ## Technologies that was used to build this app:
 
