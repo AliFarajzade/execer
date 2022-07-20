@@ -9,7 +9,7 @@
 [Execer](https://execer.herokuapp.com) is THE professional, full-featured and
 high performance fitness website.
 
-[![Execer](https://pasteboard.co/2YWgieQ27efB.png)](https://execer.herokuapp.com)
+[![Execer](https://gcdnb.pbrd.co/images/2YWgieQ27efB.png?o=1)](https://execer.herokuapp.com)
 
 ## Technologies that was used to build this app:
 
